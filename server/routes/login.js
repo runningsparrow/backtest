@@ -15,6 +15,8 @@ router.post('/login',async (ctx,next)=>{
                 "msg": "用户名或密码不正确!"
             }
         }else{
+            console.log("get roles")
+            console.log(value[0].role_id)
             await db.find({tableName:'roles',conditions:{_id:value[0].role_id},schema:RolesSchema}).then(role=>{
                 console.log(role[0].menus);
                 value[0].role = {
